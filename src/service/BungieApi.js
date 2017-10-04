@@ -15,7 +15,7 @@ export const getGroupsForMember = async () => {
     return await fetchFromBungie(`/GroupV2/User/${membershipType}/${membershipId}/${filter}/${groupType}/`, {method: "GET"})
 };
 
-const fetchFromBungie = async (path, init) => {
+const fetchFromBungie = async (path, initAddons) => {
 
     if (!isLoggedIn()) {
         login();
@@ -25,8 +25,8 @@ const fetchFromBungie = async (path, init) => {
     headers.set("Authorization", `Bearer ${getAuthToken().access_token}`);
     headers.set("X-API-Key", API_KEY);
 
-    let init = {
-        ...init,
+    const init = {
+        ...initAddons,
         headers: headers,
         mode: "cors"
     };
