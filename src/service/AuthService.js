@@ -1,12 +1,14 @@
 import {CLIENT_ID} from "../configuration/config";
 
-const ANTI_CSRF = "6i0mkLx79Hp91nzWVeHrzHG4";
 const LOCAL_STORAGE_AUTH_TOKEN = "authToken";
-const BUNGIE_AUTH_URL = `https://www.bungie.net/en/oauth/authorize?client_id=${CLIENT_ID}&response_type=code&state=${ANTI_CSRF}`;
+const LOCAL_STORAGE_STATE_TOKEN = "stateToken";
+const BUNGIE_AUTH_URL = `https://www.bungie.net/en/oauth/authorize?client_id=${CLIENT_ID}&response_type=code`;
 const BUNGIE_TOKEN_URL = "https://www.bungie.net/platform/app/oauth/token/";
 
 export const login = () => {
-    window.location.href = BUNGIE_AUTH_URL;
+    const stateToken = Math.random().toString(36).slice(2);
+    localStorage.setItem(LOCAL_STORAGE_STATE_TOKEN, stateToken);
+    window.location.href = BUNGIE_AUTH_URL + `&state=${stateToken}`;
 };
 
 export const logout = () => {
@@ -23,7 +25,16 @@ export const getAuthToken = () => {
 };
 
 export const handleAuthCallback = async () => {
-    const authCode = new URL(window.location.href).searchParams.get("code");
+    const url = new URL(window.location.href);
+
+    const state = url.searchParams.get("state");
+
+    if (state !== localStorage.getItem(LOCAL_STORAGE_STATE_TOKEN)) {
+        console.error("State parameter did not match submitted state token. Possible CSRF attack or other shenanigans");
+        return;
+    }
+
+    const authCode = url.searchParams.get("code");
 
     const authToken = await exchangeCodeForToken(authCode);
 
