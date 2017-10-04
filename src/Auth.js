@@ -69,7 +69,9 @@ class Auth extends Component {
             const response = await fetch(BUNGIE_TOKEN_URL, init);
 
             if (response.ok) {
-                console.log("Received auth token", response.json());
+                const authToken = response.json();
+                console.log("Received auth token", authToken);
+                return authToken;
             } else {
                 console.error(`Failed to fetch auth token. Got response code: ${response.status}`)
             }
