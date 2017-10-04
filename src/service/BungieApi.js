@@ -28,7 +28,6 @@ const fetchFromBungie = async (path, initAddons) => {
     const init = {
         ...initAddons,
         headers: headers,
-        mode: "cors"
     };
 
     try {
