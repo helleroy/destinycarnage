@@ -1,4 +1,52 @@
+import {getAuthToken, isLoggedIn, login} from "./AuthService"
+
+const API_KEY = "something";
 const BUNGIE_API_ROOT = "https://bungie.net/Platform";
-const GET_PROFILE_PATH = "/Destiny2/{membershipType}/Profile/{destinyMembershipId}/";
 
+export const getGroupsForMember = async () => {
 
+    if (!isLoggedIn()) {
+        login();
+    }
+
+    const membershipType = 2;
+    const membershipId = getAuthToken().membership_id;
+    const filter = 0;
+    const groupType = 1;
+
+    return await fetchFromBungie(`/GroupV2/User/${membershipType}/${membershipId}/${filter}/${groupType}/`, {method: "GET"})
+};
+
+const fetchFromBungie = async (path, init) => {
+
+    if (!isLoggedIn()) {
+        login();
+    }
+
+    const headers = new Headers();
+    headers.set("Authorization", `Bearer ${getAuthToken().access_token}`);
+    headers.set("X-API-Key", API_KEY);
+
+    let init = {
+        ...init,
+        headers: headers,
+        mode: "cors"
+    };
+
+    try {
+        console.log("Fetching resource from path ", path);
+
+        const response = await
+            fetch(BUNGIE_API_ROOT + path, init);
+
+        if (response.ok) {
+            const resource = response.json();
+            console.log("Received resource", resource);
+            return resource;
+        } else {
+            console.error(`Failed to fetch resource. Got response code: ${response.status}`)
+        }
+    } catch (e) {
+        console.error("Failed to fetch resource", e);
+    }
+};
