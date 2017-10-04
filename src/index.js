@@ -17,7 +17,6 @@ getAuthToken(authCode);
 
 async function getAuthToken(authCode) {
     const headers = new Headers();
-    headers.set("Authorization", `Basic ${authCode}`);
     headers.set("Content-Type", "application/x-www-form-urlencoded");
 
     const body = new URLSearchParams();
