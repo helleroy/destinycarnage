@@ -16,13 +16,13 @@ class Auth extends Component {
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const locationURL = new URL(window.location.href);
         const authCode = locationURL.searchParams.get("code");
 
         if (authCode !== null) {
 
-            const authToken = this.getAuthToken(authCode);
+            const authToken = await this.getAuthToken(authCode);
 
             const now = new Date();
             const timestampedAuthToken = {
