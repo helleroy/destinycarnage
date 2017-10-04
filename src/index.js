@@ -21,6 +21,7 @@ async function getAuthToken(authCode) {
 
     const body = new URLSearchParams();
     body.set("grant_type", "authorization_code");
+    body.set("client_id", CLIENT_ID);
     body.set("code", authCode);
 
     let init = {
