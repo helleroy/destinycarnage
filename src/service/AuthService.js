@@ -1,5 +1,6 @@
+import {CLIENT_ID} from "../configuration/config";
+
 const ANTI_CSRF = "6i0mkLx79Hp91nzWVeHrzHG4";
-const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const LOCAL_STORAGE_AUTH_TOKEN = "authToken";
 const BUNGIE_AUTH_URL = `https://www.bungie.net/en/oauth/authorize?client_id=${CLIENT_ID}&response_type=code&state=${ANTI_CSRF}`;
 const BUNGIE_TOKEN_URL = "https://www.bungie.net/platform/app/oauth/token/";
