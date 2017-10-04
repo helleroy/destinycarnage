@@ -1,6 +1,6 @@
 import {getAuthToken, isLoggedIn, login} from "./AuthService"
 
-const API_KEY = "something";
+const API_KEY = process.env.REACT_APP_API_KEY;
 const BUNGIE_API_ROOT = "https://bungie.net/Platform";
 
 export const getGroupsForMember = async () => {
