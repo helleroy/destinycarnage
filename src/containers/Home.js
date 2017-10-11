@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { isLoggedIn, login } from "../services/AuthService"
+import { login } from "../services/AuthService";
 import { fetchData } from "../actions/actions";
 
 class Home extends Component {
 
     componentDidMount() {
-        if (isLoggedIn()) {
+        if (this.props.auth.loggedIn) {
             this.props.dispatch(fetchData());
         }
     }
@@ -15,7 +15,7 @@ class Home extends Component {
         return (
             <div>
                 {
-                    isLoggedIn() ?
+                    this.props.auth.loggedIn ?
                         <div>
                             <h2>Welcome!</h2>
                             <p>You are logged in</p>
@@ -23,7 +23,8 @@ class Home extends Component {
                             <p>{JSON.stringify(this.props.data)}</p>
                         </div> :
                         <div>
-                            <p><input type="button" value="Log in to Destiny" onClick={login}/></p>
+                            <p><input type="button" value="Log in to Destiny" onClick={this.props.dispatch(login())}/>
+                            </p>
                         </div>
                 }
             </div>
@@ -33,6 +34,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
     return {
+        auth: state.auth,
         data: state.bungieData
     }
 };

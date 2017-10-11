@@ -1,6 +1,6 @@
 import { RECEIVE_DATA } from "../actions/actions";
 
-const bungieDate = (state = {}, action) => {
+const bungieData = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_DATA:
             switch (action.status) {
@@ -17,4 +17,4 @@ const bungieDate = (state = {}, action) => {
     }
 };
 
-export default bungieDate;
+export default bungieData;
