@@ -18,10 +18,7 @@ class UserCard extends Component {
     render() {
         const membershipData = this.props.membershipData;
 
-        console.log(membershipData);
-        console.log(!membershipData);
-
-        if (!membershipData) {
+        if (!membershipData.bungieNetUser || !membershipData.destinyMemberships) {
             return null;
         }
 
