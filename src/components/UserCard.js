@@ -16,15 +16,21 @@ class UserCard extends Component {
     }
 
     render() {
+        const membershipData = this.props.membershipData;
+
+        if (!membershipData) {
+            return null;
+        }
+
         return (
             <div>
                 <div className="bungie-user">
                     <h2>Bungie membership</h2>
-                    <div>Display name: {this.props.bungieNetUser.displayName}</div>
-                    <div>ID: {this.props.bungieNetUser.membershipId}</div>
-                    <div>Member since: {new Date(this.props.bungieNetUser.firstAccess).toDateString()}</div>
+                    <div>Display name: {membershipData.bungieNetUser.displayName}</div>
+                    <div>ID: {membershipData.bungieNetUser.membershipId}</div>
+                    <div>Member since: {new Date(membershipData.bungieNetUser.firstAccess).toDateString()}</div>
                 </div>
-                {this.props.destinyMemberships.map((destinyMembership) => {
+                {membershipData.destinyMemberships.map((destinyMembership) => {
                     return (
                         <div className="destiny-membership">
                             <h2>Destiny membership</h2>

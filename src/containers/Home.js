@@ -17,8 +17,7 @@ class Home extends Component {
             <div>
                 {
                     this.props.auth.loggedIn ?
-                        <UserCard bungieNetUser={this.props.data.bungieNetUser}
-                                  destinyMemberships={this.props.data.bungieNetUser}/>
+                        <UserCard membershipData={this.props.data}/>
                         : <div>
                             <input type="button" value="Log in to Destiny" onClick={() => login()}/>
                         </div>
