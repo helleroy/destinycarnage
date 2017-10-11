@@ -21,8 +21,7 @@ export const getMembershipsForCurrentUser = async () => {
         login();
     }
 
-    const response = await fetchFromBungie('/User/GetMembershipsForCurrentUser/', { method: "GET" });
-    return response.Response.destinyMemberships;
+    return await fetchFromBungie('/User/GetMembershipsForCurrentUser/', { method: "GET" });
 };
 
 const fetchFromBungie = async (path, initAddons) => {
