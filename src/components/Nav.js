@@ -5,8 +5,9 @@ class Nav extends Component {
     render() {
         return (
             <nav>
-                {this.props.loggedIn ? null :
-                    <input type="button" value="Log out" onClick={this.props.logout}/>}
+                {this.props.loggedIn ?
+                    <input type="button" value="Log out" onClick={this.props.logout}/>
+                    : null}
             </nav>
         );
     }
