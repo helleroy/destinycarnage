@@ -23,7 +23,7 @@ class Home extends Component {
                             <p>{JSON.stringify(this.props.data)}</p>
                         </div> :
                         <div>
-                            <p><input type="button" value="Log in to Destiny" onClick={this.props.dispatch(login())}/>
+                            <p><input type="button" value="Log in to Destiny" onClick={() => login()}/>
                             </p>
                         </div>
                 }
