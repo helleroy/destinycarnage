@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { isLoggedIn, login } from "../service/AuthService"
-import { fetchData } from '../action/actions';
 
 class Home extends Component {
 
     componentDidMount() {
-        this.props.dispatch(fetchData());
+        console.log(this.props);
     }
 
     render() {
@@ -28,4 +28,10 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapStateToProps = state => {
+    return {
+        data: state.data
+    }
+};
+
+export default connect(mapStateToProps)(Home);
