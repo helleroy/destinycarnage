@@ -11,9 +11,10 @@ import '../App.css';
 
 class App extends Component {
 
-    componentDidMount() {
+    constructor(props) {
+        super(props);
         if (isLoggedIn()) {
-            this.props.dispatch(setLoggedIn());
+            props.dispatch(setLoggedIn());
         }
     }
 
