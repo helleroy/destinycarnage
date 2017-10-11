@@ -6,7 +6,6 @@ import Nav from '../components/Nav'
 import AuthCallback from './AuthCallback';
 import { isLoggedIn } from "../services/AuthService";
 import { setLoggedIn, setLoggedOut } from "../actions/auth";
-import logo from '../logo.svg';
 import '../App.css';
 
 class App extends Component {
@@ -26,8 +25,7 @@ class App extends Component {
                         <Nav loggedIn={this.props.loggedIn}
                              logout={() => this.props.dispatch(setLoggedOut())}/>
 
-                        <img src={logo} className="App-logo" alt="logo"/>
-                        <h1 className="App-title">Welcome to React</h1>
+                        <h1 className="App-title">Destiny Carnage</h1>
                     </header>
                     <Route path="/" component={Home}/>
                     <Route path="/auth" component={AuthCallback}/>
