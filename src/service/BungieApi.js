@@ -1,5 +1,5 @@
-import {getAuthToken, isLoggedIn, login} from "./AuthService"
-import {API_KEY, BUNGIE_API_ROOT} from "../configuration/config";
+import { getAuthToken, isLoggedIn, login } from "./AuthService"
+import { API_KEY, BUNGIE_API_ROOT } from "../configuration/config";
 
 export const getGroupsForMember = async () => {
 
@@ -12,7 +12,7 @@ export const getGroupsForMember = async () => {
     const filter = 0;
     const groupType = 1;
 
-    return await fetchFromBungie(`/GroupV2/User/${membershipType}/${membershipId}/${filter}/${groupType}/`, {method: "GET"})
+    return await fetchFromBungie(`/GroupV2/User/${membershipType}/${membershipId}/${filter}/${groupType}/`, { method: "GET" })
 };
 
 const fetchFromBungie = async (path, initAddons) => {
@@ -32,10 +32,9 @@ const fetchFromBungie = async (path, initAddons) => {
     };
 
     try {
-        console.log("Fetching resource from path ", path);
+        console.log("Fetching resource from path ", path, init);
 
-        const response = await
-            fetch(BUNGIE_API_ROOT + path, init);
+        const response = await fetch(BUNGIE_API_ROOT + path, init);
 
         if (response.ok) {
             const resource = response.json();
