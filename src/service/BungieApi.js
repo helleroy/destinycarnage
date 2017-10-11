@@ -15,6 +15,15 @@ export const getGroupsForMember = async () => {
     return await fetchFromBungie(`/GroupV2/User/${membershipType}/${membershipId}/${filter}/${groupType}/`, { method: "GET" })
 };
 
+export const getMembershipsForCurrentUser = async () => {
+
+    if (!isLoggedIn()) {
+        login();
+    }
+
+    return await fetchFromBungie('/User/GetMembershipsForCurrentUser/', { method: "GET" })
+};
+
 const fetchFromBungie = async (path, initAddons) => {
 
     if (!isLoggedIn()) {
