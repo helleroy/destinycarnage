@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { isLoggedIn, login } from "../service/AuthService"
-import { getMembershipsForCurrentUser } from "../service/BungieApi";
-
+import { fetchData } from '../action/actions';
 
 class Home extends Component {
 
-    render() {
+    componentDidMount() {
+        this.props.dispatch(fetchData());
+    }
 
+    render() {
         return (
             <div>
                 {
@@ -15,7 +17,7 @@ class Home extends Component {
                             <h2>Welcome!</h2>
                             <p>You are logged in</p>
                             <h2>Here's some data</h2>
-                            <p>{JSON.stringify(getMembershipsForCurrentUser())}</p>
+                            <p>{JSON.stringify(this.props.data)}</p>
                         </div> :
                         <div>
                             <p><input type="button" value="Log in to Destiny" onClick={login}/></p>
