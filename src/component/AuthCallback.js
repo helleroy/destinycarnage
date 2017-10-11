@@ -1,10 +1,10 @@
-import {Component} from 'react';
-import {handleAuthCallback} from "../service/AuthService"
+import { Component } from 'react';
+import { handleAuthCallback } from "../service/AuthService"
 
 class AuthCallback extends Component {
 
-    componentDidMount() {
-        handleAuthCallback();
+    async componentDidMount() {
+        await handleAuthCallback();
         window.location.href = "/";
     }
 
