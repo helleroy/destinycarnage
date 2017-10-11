@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { isLoggedIn, login } from "../service/AuthService"
+import { fetchData } from "../action/actions";
 
 class Home extends Component {
 
     componentDidMount() {
-        console.log(this.props);
+        if (isLoggedIn()) {
+            this.props.dispatch(fetchData());
+        }
     }
 
     render() {
