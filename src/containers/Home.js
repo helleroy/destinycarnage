@@ -30,7 +30,7 @@ class Home extends Component {
 const mapStateToProps = state => {
     return {
         auth: state.auth,
-        data: state.bungieData
+        data: state.bungieData.data
     }
 };
 
