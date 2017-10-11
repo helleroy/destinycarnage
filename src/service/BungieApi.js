@@ -54,5 +54,6 @@ const fetchFromBungie = async (path, initAddons) => {
         }
     } catch (e) {
         console.error("Failed to fetch resource", e);
+        throw e;
     }
 };

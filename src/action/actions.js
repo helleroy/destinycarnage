@@ -1,7 +1,14 @@
 import { getMembershipsForCurrentUser } from '../service/BungieApi';
 
-export const FETCH_DATA = 'FETCH_DATA';
+export const RECEIVE_DATA = 'RECEIVE_DATA';
 
-export const fetchData = () => {
-    return getMembershipsForCurrentUser();
+const receiveData = (data) => ({
+    type: RECEIVE_DATA,
+    status: 'success',
+    data
+});
+
+export const fetchData = () => dispatch => {
+    return getMembershipsForCurrentUser()
+        .then(response => dispatch(receiveData(response)));
 };

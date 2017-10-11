@@ -1,8 +1,8 @@
-import { FETCH_DATA } from "../action/actions";
+import { RECEIVE_DATA } from "../action/actions";
 
 const bungieDate = (state = {}, action) => {
     switch (action.type) {
-        case FETCH_DATA:
+        case RECEIVE_DATA:
             switch (action.status) {
                 case 'success':
                     return {
