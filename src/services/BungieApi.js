@@ -48,7 +48,7 @@ const fetchFromBungie = async (path, initAddons) => {
         if (response.ok) {
             const resource = await response.json();
             console.log("Received resource", resource);
-            return resource;
+            return resource.Response;
         } else {
             console.error(`Failed to fetch resource. Got response code: ${response.status}`)
         }

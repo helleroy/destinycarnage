@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { login } from "../services/AuthService";
 import { fetchData } from "../actions/actions";
+import UserCard from '../components/UserCard';
 
 class Home extends Component {
 
@@ -16,15 +17,10 @@ class Home extends Component {
             <div>
                 {
                     this.props.auth.loggedIn ?
-                        <div>
-                            <h2>Welcome!</h2>
-                            <p>You are logged in</p>
-                            <h2>Here's some data</h2>
-                            <p>{JSON.stringify(this.props.data)}</p>
-                        </div> :
-                        <div>
-                            <p><input type="button" value="Log in to Destiny" onClick={() => login()}/>
-                            </p>
+                        <UserCard bungieNetUser={this.props.data.bungieNetUser}
+                                  destinyMemberships={this.props.data.bungieNetUser}/>
+                        : <div>
+                            <input type="button" value="Log in to Destiny" onClick={() => login()}/>
                         </div>
                 }
             </div>
