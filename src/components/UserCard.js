@@ -18,6 +18,9 @@ class UserCard extends Component {
     render() {
         const membershipData = this.props.membershipData;
 
+        console.log(membershipData);
+        console.log(!membershipData);
+
         if (!membershipData) {
             return null;
         }
