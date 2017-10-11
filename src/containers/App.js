@@ -22,7 +22,9 @@ class App extends Component {
             <BrowserRouter>
                 <div className="App">
                     <header className="App-header">
-                        <Nav logout={() => this.props.dispatch(setLoggedOut())}/>
+                        <Nav loggedIn={this.props.loggedIn}
+                             logout={() => this.props.dispatch(setLoggedOut())}/>
+
                         <img src={logo} className="App-logo" alt="logo"/>
                         <h1 className="App-title">Welcome to React</h1>
                     </header>
@@ -34,4 +36,10 @@ class App extends Component {
     }
 }
 
-export default connect()(App);
+const mapStateToProps = state => {
+    return {
+        loggedIn: state.auth.loggedIn
+    };
+};
+
+export default connect(mapStateToProps)(App);
