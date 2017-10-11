@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { isLoggedIn, login } from "../service/AuthService"
-import { fetchData } from "../action/actions";
+import { isLoggedIn, login } from "../services/AuthService"
+import { fetchData } from "../actions/actions";
 
 class Home extends Component {
 

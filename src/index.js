@@ -4,9 +4,9 @@ import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import reducer from './reducer'
+import reducer from './reducers'
 import './index.css';
-import App from './component/App';
+import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
 const store = createStore(

@@ -1,4 +1,4 @@
-import { getMembershipsForCurrentUser } from '../service/BungieApi';
+import { getMembershipsForCurrentUser } from '../services/BungieApi';
 
 export const RECEIVE_DATA = 'RECEIVE_DATA';
 

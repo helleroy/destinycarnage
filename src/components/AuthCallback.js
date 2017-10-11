@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { handleAuthCallback } from "../service/AuthService"
+import { handleAuthCallback } from "../services/AuthService"
 
 class AuthCallback extends Component {
 

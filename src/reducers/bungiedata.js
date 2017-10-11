@@ -1,4 +1,4 @@
-import { RECEIVE_DATA } from "../action/actions";
+import { RECEIVE_DATA } from "../actions/actions";
 
 const bungieDate = (state = {}, action) => {
     switch (action.type) {
