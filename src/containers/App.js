@@ -29,7 +29,7 @@ class App extends Component {
                         <h1 className="App-title">Destiny Carnage</h1>
                     </header>
                     <Switch>
-                        <Route path="/" component={Home}/>
+                        <Route exact path="/" component={Home}/>
                         <Route path="/auth" component={AuthCallback}/>
                         <Route path="/proxy" component={ProxyCaller}/>
                     </Switch>
