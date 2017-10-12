@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { login } from "../services/AuthService";
 import { fetchData } from "../actions/actions";
-import UserCard from '../components/UserCard';
+import DataDump from "../components/DataDump";
 
 class Home extends Component {
 
@@ -17,7 +17,8 @@ class Home extends Component {
             <div>
                 {
                     this.props.auth.loggedIn ?
-                        <UserCard membershipData={this.props.data}/>
+                        // <UserCard membershipData={this.props.data}/>
+                        <DataDump data={this.props.userData}/>
                         : <div>
                             <input type="button" value="Log in to Destiny" onClick={() => login()}/>
                         </div>
@@ -30,7 +31,8 @@ class Home extends Component {
 const mapStateToProps = state => {
     return {
         auth: state.auth,
-        data: state.bungieData.data
+        data: state.bungieData.data,
+        userData: state.userData
     }
 };
 

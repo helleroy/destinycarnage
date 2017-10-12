@@ -1,18 +1,13 @@
 import { getAuthToken, isLoggedIn, login } from "./AuthService"
 import { API_KEY, BUNGIE_API_ROOT } from "../configuration/config";
 
-export const getGroupsForMember = async () => {
+export const getClansForMember = async (member) => {
 
     if (!isLoggedIn()) {
         login();
     }
 
-    const membershipType = 2;
-    const membershipId = getAuthToken().membership_id;
-    const filter = 0;
-    const groupType = 1;
-
-    return await fetchFromBungie(`/GroupV2/User/${membershipType}/${membershipId}/${filter}/${groupType}/`, { method: "GET" })
+    return await fetchFromBungie(`/GroupV2/User/${member.membershipType}/${member.membershipId}/0/1/`, { method: "GET" })
 };
 
 export const getMembershipsForCurrentUser = async () => {
