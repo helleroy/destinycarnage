@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { login } from "../services/AuthService";
-import { fetchData } from "../actions/actions";
 import DataDump from "../components/DataDump";
+import { fetchUserData } from "../actions/user";
 
 class Home extends Component {
 
     componentDidMount() {
         if (this.props.auth.loggedIn) {
-            this.props.dispatch(fetchData());
+            this.props.dispatch(fetchUserData());
         }
     }
 
