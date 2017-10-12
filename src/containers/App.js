@@ -28,9 +28,9 @@ class App extends Component {
 
                         <h1 className="App-title">Destiny Carnage</h1>
                     </header>
-                    <Route path="/proxy" component={ProxyCaller}/>
-                    <Route path="/auth" component={AuthCallback}/>
                     <Route path="/" component={Home}/>
+                    <Route path="/auth" component={AuthCallback}/>
+                    <Route path="/proxy" component={ProxyCaller}/>
                 </div>
             </BrowserRouter>
         );
