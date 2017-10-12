@@ -5,6 +5,11 @@ import { fetchProxyData } from "../actions/actions";
 
 class ProxyCaller extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = { url: '' };
+    }
+
     render() {
         return (
             <div>
