@@ -24,6 +24,10 @@ export const getMembershipsForCurrentUser = async () => {
     return await fetchFromBungie('/User/GetMembershipsForCurrentUser/', { method: "GET" });
 };
 
+export const proxyCall = async (url) => {
+    return await fetchFromBungie(url, { method: "GET" });
+};
+
 const fetchFromBungie = async (path, initAddons) => {
 
     if (!isLoggedIn()) {
