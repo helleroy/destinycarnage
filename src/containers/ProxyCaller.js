@@ -20,7 +20,9 @@ class ProxyCaller extends Component {
                                    placeholder="Enter url to Bungie API"
                                    value={this.state.url}
                                    onInput={(event) => this.setState({ url: event.target.value })}/>
-                            <input type="button" value="Call API" onClick={() => fetchProxyData(this.state.url)}/>
+                            <input type="button"
+                                   value="Call API"
+                                   onClick={() => this.props.dispatch(fetchProxyData(this.state.url))}/>
                             <div>
                                 {JSON.stringify(this.props.data)}
                             </div>
