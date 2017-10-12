@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux';
 import Home from './Home';
 import AuthCallback from './AuthCallback';
@@ -28,9 +28,11 @@ class App extends Component {
 
                         <h1 className="App-title">Destiny Carnage</h1>
                     </header>
-                    <Route path="/" component={Home}/>
-                    <Route path="/auth" component={AuthCallback}/>
-                    <Route path="/proxy" component={ProxyCaller}/>
+                    <Switch>
+                        <Route path="/" component={Home}/>
+                        <Route path="/auth" component={AuthCallback}/>
+                        <Route path="/proxy" component={ProxyCaller}/>
+                    </Switch>
                 </div>
             </BrowserRouter>
         );
