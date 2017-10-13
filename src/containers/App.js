@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux';
@@ -8,8 +9,14 @@ import Nav from '../components/Nav'
 import { isLoggedIn } from "../services/AuthService";
 import { setLoggedIn, setLoggedOut } from "../actions/auth";
 import '../App.css';
+import type { Auth, State } from "../types/app";
 
-class App extends Component {
+type Props = {
+    auth: Auth,
+    dispatch: Function
+}
+
+class App extends Component<Props> {
 
     constructor(props) {
         super(props);
@@ -23,7 +30,7 @@ class App extends Component {
             <BrowserRouter>
                 <div className="App">
                     <header className="App-header">
-                        <Nav loggedIn={this.props.loggedIn}
+                        <Nav loggedIn={this.props.auth.loggedIn}
                              logout={() => this.props.dispatch(setLoggedOut())}/>
 
                         <h1 className="App-title">Destiny Carnage</h1>
@@ -39,9 +46,9 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: State) => {
     return {
-        loggedIn: state.auth.loggedIn
+        auth: state.auth
     };
 };
 

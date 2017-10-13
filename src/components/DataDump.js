@@ -1,6 +1,11 @@
+// @flow
 import React, { Component } from 'react';
 
-class DataDump extends Component {
+type Props = {
+    data: any
+}
+
+class DataDump extends Component<Props> {
     render() {
         return (
             <div>

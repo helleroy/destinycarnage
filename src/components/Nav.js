@@ -1,6 +1,11 @@
+// @flow
 import React, { Component } from 'react';
 
-class Nav extends Component {
+type Props = {
+    logout: Function
+}
+
+class Nav extends Component<Props> {
 
     render() {
         return (

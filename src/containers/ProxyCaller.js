@@ -1,9 +1,21 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { login } from "../services/AuthService";
 import { fetchProxyData } from "../actions/actions";
+import type { Auth, State } from "../types/app";
 
-class ProxyCaller extends Component {
+type Props = {
+    auth: Auth,
+    data: Object,
+    dispatch: Function
+}
+
+type LocalState = {
+    url: string
+}
+
+class ProxyCaller extends Component<Props, LocalState> {
 
     constructor(props) {
         super(props);
@@ -36,10 +48,9 @@ class ProxyCaller extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: State) => {
     return {
         auth: state.auth,
-        data: state.bungieData.data
     }
 };
 

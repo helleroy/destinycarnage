@@ -1,6 +1,11 @@
+// @flow
 import React, { Component } from 'react';
 
-class UserCard extends Component {
+type Props = {
+    data: Object
+}
+
+class UserCard extends Component<Props> {
 
     static mapMembershipType(type) {
         switch (type) {
@@ -16,7 +21,7 @@ class UserCard extends Component {
     }
 
     render() {
-        const membershipData = this.props.membershipData;
+        const membershipData = this.props.data;
 
         if (!membershipData) {
             return null;

@@ -1,10 +1,18 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { login } from "../services/AuthService";
 import DataDump from "../components/DataDump";
 import { fetchUserData } from "../actions/user";
+import type { Auth, DestinyUser, State } from "../types/app";
 
-class Home extends Component {
+type Props = {
+    auth: Auth,
+    userData: Array<DestinyUser>,
+    dispatch: Function
+}
+
+class Home extends Component<Props> {
 
     componentDidMount() {
         if (this.props.auth.loggedIn) {
@@ -28,10 +36,9 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: State) => {
     return {
         auth: state.auth,
-        data: state.bungieData.data,
         userData: state.userData
     }
 };
