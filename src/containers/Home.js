@@ -2,13 +2,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { login } from "../services/AuthService";
-import DataDump from "../components/DataDump";
 import { fetchUserData } from "../actions/user";
-import type { Auth, DestinyUser, State } from "../types/app";
+import type { Auth, State, User } from "../types/app";
+import UserCard from "../components/UserCard";
 
 type Props = {
     auth: Auth,
-    userData: Array<DestinyUser>,
+    userData: User,
     dispatch: Function
 }
 
@@ -25,8 +25,7 @@ class Home extends Component<Props> {
             <div>
                 {
                     this.props.auth.loggedIn ?
-                        // <UserCard membershipData={this.props.data}/>
-                        <DataDump data={this.props.userData}/>
+                        <UserCard user={this.props.userData}/>
                         : <div>
                             <input type="button" value="Log in to Destiny" onClick={() => login()}/>
                         </div>

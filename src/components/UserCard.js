@@ -1,8 +1,9 @@
 // @flow
 import React, { Component } from 'react';
+import type { DestinyUser, User } from "../types/app";
 
 type Props = {
-    data: Object
+    user: User
 }
 
 class UserCard extends Component<Props> {
@@ -21,27 +22,22 @@ class UserCard extends Component<Props> {
     }
 
     render() {
-        const membershipData = this.props.data;
-
-        if (!membershipData) {
-            return null;
-        }
-
         return (
             <div>
                 <div className="bungie-user">
                     <h2>Bungie membership</h2>
-                    <div>Display name: {membershipData.bungieNetUser.displayName}</div>
-                    <div>ID: {membershipData.bungieNetUser.membershipId}</div>
-                    <div>Member since: {new Date(membershipData.bungieNetUser.firstAccess).toDateString()}</div>
+                    <div>Display name: {this.props.user.bungieNetUser.displayName}</div>
+                    <div>ID: {this.props.user.bungieNetUser.membershipId}</div>
+                    <div>About: {this.props.user.bungieNetUser.about}</div>
+                    <div>Member since: {this.props.user.bungieNetUser.firstAccess}</div>
                 </div>
-                {membershipData.destinyMemberships.map((destinyMembership) => {
+                {this.props.user.destinyUsers.map((destinyUser: DestinyUser) => {
                     return (
                         <div className="destiny-membership">
                             <h2>Destiny membership</h2>
-                            <div>Display name: {destinyMembership.displayName}</div>
-                            <div>ID: {destinyMembership.membershipId}</div>
-                            <div>Platform: {UserCard.mapMembershipType(destinyMembership.membershipType)}</div>
+                            <div>Display name: {destinyUser.membership.displayName}</div>
+                            <div>ID: {destinyUser.membership.membershipId}</div>
+                            <div>Platform: {UserCard.mapMembershipType(destinyUser.membership.membershipType)}</div>
                         </div>
                     );
                 })}

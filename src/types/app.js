@@ -1,13 +1,18 @@
 // @flow
-import type { Group, GroupMember, UserInfo } from "./bungie-api";
+import type { GeneralUser, Group, GroupMember, UserInfo } from "./bungie-api";
 
 export type State = {
     +auth: Auth,
-    +userData: Array<DestinyUser>
+    +userData: User
 }
 
 export type Auth = {
     loggedIn: boolean
+}
+
+export type User = {
+    bungieNetUser: GeneralUser,
+    destinyUsers: Array<DestinyUser>
 }
 
 export type DestinyUser = {

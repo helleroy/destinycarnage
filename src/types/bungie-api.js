@@ -1,6 +1,25 @@
 // @flow
 export type UserMembership = {
+    bungieNetUser: GeneralUser,
     destinyMemberships: Array<UserInfo>
+}
+
+export type GeneralUser = {
+    membershipId: number,
+    uniqueName: string,
+    normalizedName: string,
+    displayName: string,
+    profilePicture: number,
+    profileTheme: number,
+    userTitle: number,
+    isDeleted: boolean,
+    about: string,
+    firstAccess: Date,
+    psnDisplayName: string,
+    xboxDisplayName: string,
+    fbDisplayName: string,
+    blizzardDisplayName: string,
+    locale: string,
 }
 
 export type UserInfo = {
