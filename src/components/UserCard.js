@@ -22,6 +22,10 @@ class UserCard extends Component<Props> {
     }
 
     render() {
+        if (!this.props.user) {
+            return null;
+        }
+
         return (
             <div>
                 <div className="bungie-user">

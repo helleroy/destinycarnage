@@ -1,6 +1,6 @@
 import { RECEIVE_USER_DATA } from "../actions/user";
 
-const userData = (state = {}, action) => {
+const userData = (state, action) => {
     switch (action.type) {
         case RECEIVE_USER_DATA:
             switch (action.status) {
