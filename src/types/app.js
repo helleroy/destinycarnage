@@ -3,7 +3,8 @@ import type { GeneralUser, Group, GroupMember, UserInfo } from "./bungie-api";
 
 export type State = {
     +auth: Auth,
-    +userData: User
+    +userData: User,
+    +randomData: Object
 }
 
 export type Auth = {

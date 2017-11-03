@@ -1,18 +1,17 @@
-import { LOG_IN, LOG_OUT } from "../actions/auth";
+import type { State } from "../types/app";
+import type { Action } from "../types/actions";
 
-const auth = (state = {
-    loggedIn: false
-}, action) => {
+const auth = (state: State = { loggedIn: false }, action: Action): State => {
     switch (action.type) {
-        case LOG_IN:
+        case 'LOG_IN':
             return {
                 ...state,
-                loggedIn: true
+                auth: { loggedIn: true }
             };
-        case LOG_OUT:
+        case 'LOG_OUT':
             return {
                 ...state,
-                loggedIn: false
+                auth: { loggedIn: false }
             };
         default:
             return state;

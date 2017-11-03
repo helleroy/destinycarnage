@@ -1,13 +1,14 @@
-import { RECEIVE_USER_DATA } from "../actions/user";
+import type { Action } from "../types/actions";
+import type { State } from "../types/app";
 
-const userData = (state = null, action) => {
+const userData = (state: State = null, action: Action): State => {
     switch (action.type) {
-        case RECEIVE_USER_DATA:
+        case 'RECEIVE_USER_DATA':
             switch (action.status) {
                 case 'success':
                     return {
                         ...state,
-                        data: action.data
+                        userData: action.data
                     };
                 default:
                     return state;

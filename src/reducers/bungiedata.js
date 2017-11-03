@@ -1,23 +1,24 @@
-import { RECEIVE_DATA, RECEIVE_PROXY_DATA } from "../actions/actions";
+import type { State } from "../types/app";
+import type { Action } from "../types/actions";
 
-const bungieData = (state = {}, action) => {
+const bungieData = (state: State = {}, action: Action): State => {
     switch (action.type) {
-        case RECEIVE_DATA:
+        case 'RECEIVE_DATA':
             switch (action.status) {
                 case 'success':
                     return {
                         ...state,
-                        data: action.data
+                        randomData: action.data
                     };
                 default:
                     return state;
             }
-        case RECEIVE_PROXY_DATA:
+        case 'RECEIVE_PROXY_DATA':
             switch (action.status) {
                 case 'success':
                     return {
                         ...state,
-                        data: action.data
+                        randomData: action.data
                     };
                 default:
                     return state;
