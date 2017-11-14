@@ -1,6 +1,6 @@
 // @flow
 import { getMembershipsForCurrentUser, proxyCall } from '../services/BungieApi';
-import type { ReceiveDataAction, ReceiveProxyDataAction, ThunkAction } from "../types/actions";
+import type { Dispatch, PromiseAction, ReceiveDataAction, ReceiveProxyDataAction, ThunkAction } from "../types/actions";
 
 const receiveData = (data: Object): ReceiveDataAction => {
     return {
@@ -16,12 +16,12 @@ const receiveProxyData = (data: Object): ReceiveProxyDataAction => ({
     data
 });
 
-export const fetchData = (): ThunkAction => (dispatch: Function) => {
+export const fetchData = (): ThunkAction => (dispatch: Dispatch): PromiseAction => {
     return getMembershipsForCurrentUser()
         .then(response => dispatch(receiveData(response)));
 };
 
-export const fetchProxyData = (url: string): ThunkAction => (dispatch: Function) => {
+export const fetchProxyData = (url: string): ThunkAction => (dispatch: Dispatch): PromiseAction => {
     return proxyCall(url)
         .then(response => dispatch(receiveProxyData(response)));
 };

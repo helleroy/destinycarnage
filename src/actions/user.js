@@ -2,7 +2,7 @@
 import { getClansForMember, getMembershipsForCurrentUser } from "../services/BungieApi";
 import type { DestinyUser, User } from "../types/app";
 import type { UserMembership } from "../types/bungie-api";
-import type { ReceiveUserDataAction, ThunkAction } from "../types/actions";
+import type { Dispatch, PromiseAction, ReceiveUserDataAction, ThunkAction } from "../types/actions";
 
 const receiveUserData = (data: User): ReceiveUserDataAction => ({
     type: 'RECEIVE_USER_DATA',
@@ -10,7 +10,7 @@ const receiveUserData = (data: User): ReceiveUserDataAction => ({
     data: data
 });
 
-export const fetchUserData = (): ThunkAction => async (dispatch: Function) => {
+export const fetchUserData = (): ThunkAction => async (dispatch: Dispatch): PromiseAction => {
     const memberships: UserMembership = await getMembershipsForCurrentUser();
 
     const destinyUsers: Array<DestinyUser> = await Promise.all(
